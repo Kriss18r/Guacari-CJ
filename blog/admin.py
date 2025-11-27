@@ -10,13 +10,13 @@ class PhotoInLine(admin.TabularInline):
 #Admin para Posts
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'author', 'published', 'is_published')
+    list_display = ('title', 'author', 'published_at', 'is_published')
     list_filter = ('is_published', 'category')
     search_fields = ('title', 'excerpt', 'content')
     prepopulated_fields = {'slug': ('title',)}
     inlines = [PhotoInLine]
-    date_hierarchy = 'published'
-    ordering = ('-published',)
+    date_hierarchy = 'published_at'
+    ordering = ('-published_at',)
 
 #Admin para Categorias
 @admin.register(Category)
@@ -27,7 +27,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = ('title', 'start', 'end', 'location')
-    list_filter = ('start')
+    list_filter = ('start',)
     search_fields = ('title', 'description', 'location')
 
 #Admin para Miembros

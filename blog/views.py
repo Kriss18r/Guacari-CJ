@@ -11,7 +11,7 @@ class PostListView(ListView):
     template_name = 'blog/index.html'
     context_object_name = 'posts'
     paginate_by = 6
-    queryset = Post.objects.filter(published=True)
+    queryset = Post.objects.filter(is_published=True).order_by('-published_at')
 
 class PostDetailView(DetailView):
     model = Post
