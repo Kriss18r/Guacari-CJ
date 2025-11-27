@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4">Blog del Bosque Guacarí CJ</h1>
+
+{% for post in posts %}
+<div class="card mb-4">
+    <div class="card-body">
+        <h3>{{ post.titulo }}</h3>
+        <p class="text-muted">{{ post.fecha.strftime('%d/%m/%Y') }}</p>
+        <p>{{ post.contenido[:200] }}...</p>
+        <a class="btn btn-success" href="{{ url_for('post', id=post.id) }}">Leer más</a>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

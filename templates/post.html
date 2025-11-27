@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ post.titulo }}</h2>
+<p class="text-muted">{{ post.fecha.strftime('%d/%m/%Y') }}</p>
+
+<p>{{ post.contenido }}</p>
+
+<a href="/" class="btn btn-secondary mt-3">← Volver</a>
+{% endblock %}
