@@ -36,7 +36,7 @@ def new_event():
         fecha_str = request.form["fecha_evento"].strip()
         if not titulo or not descripcion or not fecha_str:
             flash("Todos los campos son requeridos.", "warning")
-            return redirect(url_for("admin.new_event"))
+            return redirect(url_for("admin.new_events"))
         fecha_evento = datetime.fromisoformat(fecha_str)  # espera 'YYYY-MM-DDTHH:MM' o 'YYYY-MM-DD'
         ev = Evento(titulo=titulo, descripcion=descripcion, fecha_evento=fecha_evento, creado_por=session.get("user_id"))
         db.session.add(ev)
