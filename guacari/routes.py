@@ -13,6 +13,11 @@ def post(id):
     p = Post.query.get_or_404(id)
     return render_template("post.html", post=p)
 
+@main_bp.route("/eventos")
+def eventos():
+    evs = Evento.query.order_by(Evento.fecha_evento).all()
+    return render_template("eventos.html", eventos=evs)
+
 @main_bp.route("/eventos/<int:id>")
 def evento_detalle(id):
     evento = Evento.query.get_or_404(id)
