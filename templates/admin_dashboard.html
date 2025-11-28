@@ -1,6 +1,35 @@
 {% extends "base.html" %}
+{% block title %}Panel de Administración{% endblock %}
+
 {% block content %}
-  <h2>Panel Admin</h2>
-  <a class="btn btn-success" href="{{ url_for('admin.new_post') }}">Crear Post</a>
-  <a class="btn btn-primary" href="{{ url_for('admin.new_event') }}">Crear Evento</a>
+<div class="container mt-4">
+    <h2 class="mb-4">Panel de Administración</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            <a href="{{ url_for('admin.new_event') }}" class="text-decoration-none">
+                <div class="card text-center p-3 shadow-sm">
+                    <h4>Crear Evento</h4>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="{{ url_for('admin.new_post') }}" class="text-decoration-none">
+                <div class="card text-center p-3 shadow-sm">
+                    <h4>Crear Post</h4>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="{{ url_for('main.index') }}" class="text-decoration-none">
+                <div class="card text-center p-3 shadow-sm">
+                    <h4>Volver al Blog</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}
+

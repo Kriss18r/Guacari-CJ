@@ -8,28 +8,40 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 </head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark" style="background:#1e3a2f;">
-  <div class="container">
-    <a class="navbar-brand" href="{{ url_for('main.index') }}">Guacarí CJ</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.index') }}">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.eventos') }}">Eventos</a></li>
-        {% if session.username %}
-          <li class="nav-item"><a class="nav-link" href="#">Hola, {{ session.username }}</a></li>
-          {% if session.role == 'admin' %}
-            <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.dashboard') }}">Admin</a></li>
-          {% endif %}
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
-        {% else %}
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">Ingresar</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.register') }}">Registrar</a></li>
-        {% endif %}
-      </ul>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background:#014905;">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('main.index') }}">Guacarí CJ</a>
+        <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('main.index') }}">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('main.eventos') }}">Eventos</a></li>
+            {% if session.username %}
+            <li class="nav-item"><a class="nav-link" href="#">Hola, {{ session.username }}</a></li>
+            {% if session.role == 'admin' %}
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('admin.dashboard') }}">Admin</a></li>
+            {% endif %}
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">Ingresar</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.register') }}">Registrar</a></li>
+            {% endif %}
+        </ul>
+        </div>
     </div>
-  </div>
-</nav>
+    </nav>
+
+    <div class="banner">
+        <div class="container">
+            <div class="col text-center py-4">
+                <h1>Guacarí CJ</h1>
+                <p>¡Bienvenidos a nuestro blog!</p>
+            </div>
+        </div>
+    </div>
+</header>
+<body>
+
 
 <div class="container mt-4">
   {% with messages = get_flashed_messages(with_categories=true) %}
@@ -46,5 +58,10 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+<footer class="bg-dark text-white text-center py-3 mt-4">
+    <div class="container">
+        <p>&copy; 2024 Guacarí CJ. Todos los derechos reservados.</p>
+    </div>
 </html>

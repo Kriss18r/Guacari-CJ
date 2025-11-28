@@ -1,6 +1,30 @@
 {% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
 {% block content %}
-  <h1>Últimos posts</h1>
+<div class="text-center mb-4" class="welcome">
+    <h1>Bienvenidos a Guacarí CJ</h1>
+    <p>Tu espacio para conectarte, aprender y crecer</p>
+</div>
+
+<div>
+  <h1>Conoce Sobre nosotros</h1>
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <img src="{{ url_for('static', filename='img/aloha.jpg') }}" alt="Guacarí CJ" class="img-fluid rounded">
+    </div>
+    <div class="col-md-6 d-flex align-items-center">
+      <div>
+        <p>Guacarí CJ es una comunidad dedicada a compartir conocimientos, experiencias y eventos relacionados con el desarrollo personal y comunitario. Nuestro objetivo es fomentar un espacio donde las personas puedan conectarse, aprender y crecer juntos.</p>
+        <p>Únete a nosotros en nuestros próximos eventos y descubre todo lo que tenemos para ofrecer.</p>
+      </div>
+    </div>
+</div>
+
+  <h1>Nuestros encuentros</h1>
   <div class="row">
     {% for post in posts %}
       <div class="col-md-6">
@@ -14,4 +38,37 @@
       </div>
     {% endfor %}
   </div>
+
+<div class="calendario">
+  <h1>Próximos eventos</h1>
+  <div class="row">
+    {% for event in events %}
+      <div class="col-md-4">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5>{{ event.nombre }}</h5>
+            <p><strong>Fecha:</strong> {{ event.fecha.strftime('%d %B %Y') }}</p>
+            <p>{{ event.descripcion[:100] }}...</p>
+            <a href="{{ url_for('main.event', id=event.id) }}" class="btn btn-primary">Ver detalles</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="ubicacion">
+  <h1>Nuestra Ubicación</h1>
+  <p>¡Nos encontramos todos los Sabados en estos dos lugares!</p>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Parque San Cristobal</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.632953486509!2d-75.2476146857522!3d4.305529796857451!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99f4b6f5b6b7%3A0x8c8e4e8e4e8e4e8e!2sIglesia%20Cristiana%20Jovenes!5e0!3m2!1ses-419!2sco!4v1697051234567!5m2!1ses-419!2sco" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="col-md-6">
+      <h3>Parque Velodromo Primera de Mayo</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.123456789012!2d-75.123456789012!3d4.123456789012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f99f4b6f5b6b7%3A0x1234567890abcdef!2sParque%20Principal%20de%20Guacar%C3%AD!5e0!3m2!1ses-419!2sco!4v1697056543210!5m2!1ses-419!2sco" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+</div>
+
 {% endblock %}

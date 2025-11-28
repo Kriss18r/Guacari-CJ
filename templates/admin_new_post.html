@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Crear Nuevo Post{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Crear Post</h2>
+
+    <form action="{{ url_for('admin.new_post') }}" method="POST">
+        <div class="mb-3">
+            <label class="form-label">Título del Post</label>
+            <input type="text" class="form-control" name="title" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Contenido</label>
+            <textarea class="form-control" name="content" rows="7" required></textarea>
+        </div>
+
+        <button class="btn btn-primary">Publicar</button>
+        <a href="{{ url_for('admin.dashboard') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

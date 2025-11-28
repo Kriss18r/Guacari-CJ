@@ -43,4 +43,4 @@ def new_event():
         db.session.commit()
         flash("Evento creado.", "success")
         return redirect(url_for("main.eventos"))
-    return render_template("admin_new_event.html")
+    return render_template("admin_new_events.html")
